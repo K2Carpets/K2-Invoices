@@ -1,0 +1,25 @@
+{
+  "name": "K2 Carpets and Beds — Invoices",
+  "short_name": "K2 Invoices",
+  "description": "Invoice and quotation manager for K2 Carpets and Beds",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f7fc",
+  "theme_color": "#7B5EA7",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
