@@ -1,5 +1,5 @@
 // K2 Invoices - Simple offline cache
-const CACHE = 'k2-invoices-v13';
+const CACHE = 'k2-invoices-v14';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
