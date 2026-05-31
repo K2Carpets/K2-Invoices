@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="./favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#1A1A2E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#1A1F36" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="K2 Invoices" />
@@ -12,13 +12,23 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>K2 Carpets and Beds — Invoices</title>
     <style>
-      html, body { margin: 0; padding: 0; background: #f8f7fc; font-family: Georgia, serif; }
+      html, body { margin: 0; padding: 0; background: #F2F3F7; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; -webkit-font-smoothing: antialiased; }
       #root { min-height: 100vh; }
-      .boot { display: flex; align-items: center; justify-content: center; height: 100vh; color: #7B5EA7; font-size: 18px; }
+      .boot { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; gap: 18px; }
+      .boot-logo { width: 64px; height: 64px; border-radius: 16px; background: #F6C61A; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 26px; color: #15192B; box-shadow: 0 4px 16px rgba(246,198,26,0.35); }
+      .boot-text { color: #8A92A3; font-size: 14px; font-weight: 600; letter-spacing: 0.3px; }
+      .boot-spin { width: 22px; height: 22px; border: 2.5px solid #EEF0F4; border-top-color: #F6C61A; border-radius: 50%; animation: spin 0.7s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
     </style>
   </head>
   <body>
-    <div id="root"><div class="boot">Loading K2 Invoices…</div></div>
+    <div id="root">
+      <div class="boot">
+        <div class="boot-logo">K2</div>
+        <div class="boot-spin"></div>
+        <div class="boot-text">Loading…</div>
+      </div>
+    </div>
     <script type="module" src="./app.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
