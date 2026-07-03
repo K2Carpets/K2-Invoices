@@ -1,5 +1,5 @@
-// K2 Invoices - Simple offline cache
-const CACHE = 'k2-invoices-v53';
+// K2 Invoices - Network-first (auto-updates, offline fallback)
+const CACHE = 'k2-invoices-v54';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
@@ -19,19 +19,19 @@ self.addEventListener('fetch', (e) => {
   // Never cache Anthropic API calls
   if (req.url.includes('api.anthropic.com')) return;
 
+  // NETWORK-FIRST: always try to fetch the latest from the network.
+  // Fall back to the cached copy only if offline / fetch fails.
   e.respondWith(
-    caches.open(CACHE).then((cache) =>
-      cache.match(req).then((cached) => {
-        const network = fetch(req)
-          .then((res) => {
-            if (res && res.status === 200 && res.type === 'basic') {
-              cache.put(req, res.clone());
-            }
-            return res;
-          })
-          .catch(() => cached);
-        return cached || network;
+    fetch(req)
+      .then((res) => {
+        if (res && res.status === 200 && res.type === 'basic') {
+          const copy = res.clone();
+          caches.open(CACHE).then((cache) => cache.put(req, copy));
+        }
+        return res;
       })
-    )
+      .catch(() =>
+        caches.open(CACHE).then((cache) => cache.match(req))
+      )
   );
 });
