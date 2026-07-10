@@ -1,5 +1,5 @@
 // K2 Invoices - Network-first (auto-updates, offline fallback)
-const CACHE = 'k2-invoices-v60';
+const CACHE = 'k2-invoices-v61';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
